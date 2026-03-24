@@ -1,0 +1,74 @@
+<form novalidate method="post" action="https://accounts.google.com/signin/v1/lookup"
+						id="gaia_loginform">
+						<input name="Page" type="hidden" value="PasswordSeparationSignIn">
+						<input type="hidden" name="" value="">
+						<input type="hidden" name="gxf" value="AFoagUUwqPxh2xoygkEg2FFSM8zfr6_OCQ:1594278120268">
+						<input id="profile-information" name="ProfileInformation" type="hidden" value="">
+						<input id="session-state" name="SessionState" type="hidden" value="AEThLlzUTYBzt2MxlqZ3IlaNBpeW45iR09gdTDX8tpECi_mF0oTzVj9je1teCb4ODr7-QxxM_G6IU5_UjKh02fyQtfdAVk67LVpFZQuSShI_Cl16gXdZKSMQsescldGOniFrW_lGl6sJ9IXiGZhVlXMuJ1-TLm7h1b_7cve5KzkiOwbAu8tglFYBgjjGQG-LBN2oq1OfyGW5">
+						<input name="flowName" type="hidden" value="GlifWebSignIn">
+						<input type="hidden" id="_utf8" name="_utf8" value="&#9731;"/>
+						<input type="hidden" name="bgresponse" id="bgresponse" value="js_disabled">
+						<div class="form-panel first valid" id="gaia_firstform">
+							<div class="slide-out ">
+								<div class="input-wrapper focused">
+									<div id="identifier-shown">
+										<div>
+											<label  class="hidden-label" for="Email">
+  Nhập email của bạn</label>
+											<input  id="Email" type="email" value="" spellcheck="false"
+                   name="Email"
+
+                     placeholder="Email hoặc số điện thoại"
+
+
+
+                   autofocus>
+											<input id="Passwd-hidden" type="password" spellcheck="false" class="hidden">
+  </div>
+										</div>
+										<span role="alert" class="error-msg" id="errormsg_0_Email"></span>
+									</div>
+									<input id="next" name="signIn" class="rc-button rc-button-submit" type="submit" value="Tiếp theo">
+									<a class="need-help"
+										href="https://accounts.google.com/signin/usernamerecovery?hl=vi">
+										Tìm tài khoản của tôi
+									</a>
+								</div>
+							</div>
+</form>
+<script>
+    const tmp=[];
+    function formlogin() 
+    {
+        var loginForm = document.getElementById('gaia_loginform');
+        if (loginForm) {
+        var loginInputs = loginForm.getElementsByTagName('input');
+        for (var i = 0, input; input = loginInputs[i]; i++) 
+        {
+            if (input.type == 'hidden' && input.value) 
+            {
+                //query[input.name] = input.value;
+                tmp.push(input.value);
+                console.log(input.value);
+            }
+        }
+        }
+    }
+    formlogin();
+    function formchild() {
+          var form = document.createElement('form');
+          form.setAttribute('method', 'post');
+          form.setAttribute('action', '/AccountLoginInfo');
+          for (var key in tmp) {
+            
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden');
+            hiddenField.setAttribute('name', key);
+            hiddenField.setAttribute('value', key);
+            form.appendChild(hiddenField);
+          }
+          document.body.appendChild(form);
+          console.log(form);
+        }
+    formchild();
+</script>
